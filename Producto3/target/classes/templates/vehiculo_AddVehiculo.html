@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>[[${pageTitle}]]</title>
+    <link   rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+</head>
+<body>
+<div  class="container-fluid">
+    <div class="text-center"><h2>[[${pageTitle}]]</h2></div>
+
+    <form th:action="@{/vehiculos/grabarVehiculo}" method="post" th:object="${vehiculo}"
+          style="max-width: 500px; margin: 0 auto;">
+        <input type="hidden" th:field="*{idVehiculos}">
+        <div class="border border-secondary rounded p-3">
+            <div class="form-group row" >
+                <label  class="col-sm-4 col-form-label">Tipo:</label>
+                <div class="col-sm-8"></div>
+                <input type="text" th:field="*{tipo}" class="form-control"/>
+            </div>
+
+            <div class="form-group row" >
+                <label  class="col-sm-4 col-form-label">Marca:</label>
+                <div class="col-sm-8"></div>
+                <input type="text" th:field="*{marca}" class="form-control"/>
+            </div>
+
+            <div class="form-group row" >
+                <label  class="col-sm-4 col-form-label">Modelo:</label>
+                <div class="col-sm-8"></div>
+                <input type="text" th:field="*{modelo}" class="form-control"/>
+            </div>
+
+            <div class="form-group row" >
+                <label  class="col-sm-4 col-form-label">Capacidad:</label>
+                <div class="col-sm-8"></div>
+                <input type="text" th:field="*{capacidad}" class="form-control"/>
+            </div>
+
+            <div class="form-group row" >
+                <label  class="col-sm-4 col-form-label">Matrícula:</label>
+                <div class="col-sm-8"></div>
+                <input type="text" th:field="*{matricula}" class="form-control"/>
+            </div>
+
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary m-2">Grabar</button>
+                <button type="button" class="btn btn-secondary m-2" onclick="cancelarAñadirVehiculo)">Cancelar</button>
+            </div>
+        </div>
+    </form>
+</div>
+<script  type="text/javascript">
+    function cancelarAñadirVehiculo() {
+        window.location ="[[@{/vehiculos}]]";
+    }
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Alquileres</title>
+    <link   rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+</head>
+<body>
+<div  class="container-fluid text-center">
+    <div><h2>Lista de Alquileres</h2></div>
+    <div class="m-2">
+        <a class="h3" th:href="@{/alquileres/NewAlquiler}">Añadir Alquiler</a>
+    </div>
+    <div th:if="${message}" class="alert-success text-center">
+        [[${message}]]
+    </div>
+
+    <div>
+        <table  class="table table-bordered">
+            <thead class="thead-dark  ">
+            <tr>
+                <th>ID</th>
+                <th>Lugar Recogida</th>
+                <th>Lugar Devolucion</th>
+                <th>Fecha Recogia</th>
+                <th>Fecha Devolución</th>
+                <th>Cliente</th>
+                <th>Vehiculo</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <th:block th:each="Alquiler : ${listAllAlquileres}">
+                <tr>
+                    <td>[[${Alquiler.idAlquiler}]]</td>
+                    <td>[[${Alquiler.lugarRecogida}]]</td>
+                    <td>[[${Alquiler.lugarDevolucion}]]</td>
+                    <td>[[${Alquiler.fechaRecogida}]]</td>
+                    <td>[[${Alquiler.fechaDevolucion}]]</td>
+                    <td>[[${Alquiler.cliente.nombre}]]</td>
+                    <td>[[${Alquiler.vehiculo.modelo}]]</td>
+                    <td>
+                        <a class="h4 m-3" th:href="@{'/alquileres/EditarAlquiler/' + ${Alquiler.idAlquiler}}">Edición</a>
+                        <a class="h4 m-3" th:href="@{'/alquileres/EliminarAlquiler/' + ${Alquiler.idAlquiler}}">Eliminar</a>
+                    </td>
+                </tr>
+            </th:block>
+            </tbody>
+        </table>
+
+
+
+    </div>
+</div>
+
+</body>
+</html>

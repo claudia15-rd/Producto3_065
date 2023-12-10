@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>[[${pageTitle}]]</title>
+    <link   rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+</head>
+<body>
+<div  class="container-fluid">
+    <div class="text-center"><h2>[[${pageTitle}]]</h2></div>
+
+    <form th:action="@{/alquileres/grabarAlquiler}" method="post" th:object="${alquiler}"
+        style="max-width: 500px; margin: 0 auto;">
+        <input type="hidden" th:field="*{idAlquiler}">
+        <div class="border border-secondary rounded p-3">
+            <div class="form-group row" >
+                <label  class="col-sm-2 col-form-label">Vehiculos:</label>
+                <div class="col-sm-6"></div>
+                <select th:field="*{vehiculo}" class="form-control" required>
+                    <th:block th:each="vehi : ${listAllVehiculos}  ">
+                        <option th:text="${vehi.modelo}" th:value="${vehi.idVehiculos}" />
+                    </th:block>
+                </select>
+            </div>
+            <div class="form-group row" >
+                <label  class="col-sm-4 col-form-label">Clientes:</label>
+                <div class="col-sm-6"></div>
+                <select th:field="*{cliente}" class="form-control" required>
+                    <th:block th:each="cli : ${listAllClientes}  ">
+                        <option th:text="${cli.nombre}" th:value="${cli.idClientes}" />
+                    </th:block>
+                </select>
+            </div>
+
+
+            <div class="form-group row" >
+                <label  class="col-sm-4 col-form-label">Lugar de Recogida:</label>
+                <div class="col-sm-6"></div>
+                <input type="text" th:field="*{lugarRecogida}" class="form-control"/>
+            </div>
+
+            <div class="form-group row" >
+                <label  class="col-sm-4 col-form-label">Lugar de Devolución:</label>
+                <div class="col-sm-6"></div>
+                <input type="text" th:field="*{lugarDevolucion}" class="form-control"/>
+            </div>
+
+            <div class="form-group row " >
+                <label  class="col-sm-4 col-form-label">Fecha Recogida:</label>
+                <div class="col-sm-6"></div>
+                <input type="date" th:field="*{fechaRecogida}" class="form-control"/>
+            </div>
+
+            <div class="form-group row" >
+                <label  class="col-sm-4 col-form-label">Fecha devolución:</label>
+                <div class="col-sm-6"></div>
+                <input type="date" th:field="*{fechaDevolucion}" class="form-control"/>
+            </div>
+
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary m-2">Grabar</button>
+                <button type="button" class="btn btn-secondary m-2" onclick="cancelarAñadirAlquiler()">Cancelar</button>
+            </div>
+
+        </div>
+    </form>
+</div>
+<script  type="text/javascript">
+    function cancelarAñadirAlquiler() {
+        window.location ="[[@{/alquiler}]]";
+    }
+</script>
+
+</body>
+</html>

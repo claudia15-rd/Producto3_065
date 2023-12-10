@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Vehiculos</title>
+    <link   rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+</head>
+<body>
+<div  class="container-fluid text-center">
+    <div><h2>Lista de Vehiculos</h2></div>
+    <div class="m-2">
+        <a class="h3" th:href="@{/vehiculos/NewVehiculo}">Añadir Vehiculo</a>
+    </div>
+    <div th:if="${message}" class="alert-success text-center">
+        [[${message}]]
+    </div>
+
+    <div>
+        <table  class="table table-bordered">
+            <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>Tipo</th>
+                <th>Marca</th>
+                <th>Capacidad</th>
+                <th>Matricula</th>
+                <th></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <th:block th:each="Vehiculo : ${listAllVehiculos}">
+                <tr>
+                    <td>[[${Vehiculo.idVehiculos}]]</td>
+                    <td>[[${Vehiculo.tipo}]]</td>
+                    <td>[[${Vehiculo.marca}]]</td>
+                    <td>[[${Vehiculo.capacidad}]]</td>
+                    <td>[[${Vehiculo.matricula}]]</td>
+                    <td>
+                        <a class="h4 m-3" th:href="@{'/vehiculos/EditarVehiculo/' + ${Vehiculo.idVehiculos}}">Edición</a>
+                        <a class="h4 m-3" th:href="@{'/vehiculos/EliminarVehiculo/' + ${Vehiculo.idVehiculos}}">Eliminar</a>
+                    </td>
+                </tr>
+            </th:block>
+            </tbody>
+        </table>
+
+
+
+    </div>
+</div>
+
+</body>
+</html>

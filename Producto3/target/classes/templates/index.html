@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>Bienvenidos a mi Aplicación</title>
+    <meta charset="UTF-8">
+    <title>Bienvenidos a mi Aplicación</title>
+    <link  rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+
+</head>
+<body>
+<div  class="container-fluid text-center">
+    <h1>Bienvenido a mi Aplicación</h1>
+    <a class="h2" th:href="@{/clientes}"> Clientes</a> </h2>
+    <span class="d-block mb-3"></span>
+    <a class="h2" th:href="@{/vehiculos}"> Vehículos </a></h2>
+    <span class="d-block mb-3"></span>
+    <a class="h2" th:href="@{/alquiler}"> Alquiler</a></h2>
+    <span class="d-block mb-3"></span>
+    <a class="h2" th:href="@{/logout}"> Salir</a></h2>
+</div>
+
+</body>
+</html>
